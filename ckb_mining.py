@@ -102,7 +102,7 @@ def mining_success(address):
             cmd_result = execCmd("ckb-cli wallet get-balance --address %s " % address)
             print(cmd_result)
             json_load = json.loads(cmd_result)
-            utxo_count = json_load["Capacity"]["utxo_count"]
+            utxo_count = json_load["Capacity"]["capacity"]
             print(utxo_count)
 
             if utxo_count == None:
@@ -119,7 +119,7 @@ def run():
     init_ckb_node()
     while(True):
         address = start_ckb_node()
-        time.sleep(5)
+        time.sleep(30)
 
         start_mining(3)
         mining_success(address)
